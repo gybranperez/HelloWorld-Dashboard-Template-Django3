@@ -1,8 +1,12 @@
 /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */
+*{
+    box-sizing: border-box !important;
+}
 .navbar{
     z-index: 5000;
+    
 }
 .wrapper {
     display: flex;
@@ -10,6 +14,7 @@
 }
 
 #sidebar {
+    padding-top: 50px !important;
     width: 250px;
     position: fixed;
     top: 0;
@@ -26,7 +31,6 @@
 }
 
 #sidebar .sidebar-header {
-    padding-top: 58px !important;
     padding: 11px 20px 10px 20px;
 }
 
@@ -34,7 +38,6 @@
     border-bottom: 1px solid rgb(55,70,80);
 }
 #sidebar>ul{
-    padding-top: 60px !important;
 }
 #sidebar ul p {
     color: #fff;
