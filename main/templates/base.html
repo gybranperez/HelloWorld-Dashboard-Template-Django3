@@ -7,7 +7,10 @@
     <meta name="description" content="">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 
-    <title>Document</title>
+    <title>
+      {% block title %}
+      {% endblock %}
+    </title>
     
     {# Cargamos la librería #}
     {% load bootstrap4 %}
@@ -17,10 +20,8 @@
 </head>
 <body>
   <nav class="navbar navbar-expand bg-dark navbar-dark flex-column flex-md-row bd-navbar">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <a class="navbar-brand d-none d-md-block" href="#">KIO</a>
+    <a id="" class="navbar-brand d-flex d-md-none sidebarCollapse" href="#">KIO</a>
     
     <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
       <li class="nav-item dropdown">
@@ -36,8 +37,8 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link p-2 active" id="sidebarCollapse">
-          MENU
+        <a class="nav-link p-2 active sidebarCollapse" id="">
+          Menu
         </a>
       </li>
       <li class="nav-item">
@@ -46,9 +47,9 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link p-2 btn btn-danger">
-            Salir
-        </a>
+        <a id="mainlogoutbtn" class="nav-link p-2 btn btn-danger text-white bg-danger">
+          Salir
+      </a>
       </li>
     </ul>
   </nav>
@@ -63,33 +64,39 @@
 
         <ul class="list-unstyled components">
             <li>
-                <a href="#">Dashboard</a>
+                <a href="">Dashboard</a>
             </li>
             <li>
                 <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Contabilidad</a>
                 <ul class="collapse list-unstyled" id="homeSubmenu">
                     <li>
-                        <a href="#">Facturación</a>
+                        <a href="">Facturación</a>
                     </li>
                     <li>
-                        <a href="#">CxC</a>
+                        <a href="">CxC</a>
                     </li>
                     <li>
-                        <a href="#">CxP</a>
+                        <a href="">CxP</a>
                     </li>
                 </ul>
             </li>
             <li>
-                <a href="#">Inventario</a>
+                <a href="">Inventario</a>
             </li>
-            <li>
-                <a href="#">Logout</a>
+            <li class="d-md-none">
+              <a class="bg-danger text-white" href="">Logout</a>
             </li>
         </ul>
     </nav>
 
     <!-- Page Content  -->
     <div id="content">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          {% block breadcrumb %}
+          {% endblock %}
+        </ol>
+      </nav>
         {% block content %}
         {% endblock %}
     </div>
@@ -105,7 +112,7 @@
         $("#sidebar").mCustomScrollbar({
             theme: "minimal"
         });
-        $('#sidebarCollapse').on('click', function () {
+        $('.sidebarCollapse').on('click', function () {
             $('#sidebar, #content').toggleClass('active');
             $('.collapse.in').toggleClass('in');
             $('a[aria-expanded=true]').attr('aria-expanded', 'false');

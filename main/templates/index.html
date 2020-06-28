@@ -1,13 +1,11 @@
 {% extends 'base.html' %}
+{% block title %}
+  HOME
+{% endblock %}
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a>Home</a></li>
+<li class="breadcrumb-item active" aria-current="page">Main</li>
+{% endblock %}
 {% block content %}
-
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="#">Home</a></li>
-      <li class="breadcrumb-item"><a href="#">Library</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Data</li>
-    </ol>
-  </nav>
-
-
+<h1>Welcome</h1>
 {% endblock %}
